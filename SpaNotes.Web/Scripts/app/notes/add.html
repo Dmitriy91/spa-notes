@@ -1,0 +1,56 @@
+﻿<hr />
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">Add note</div>
+        <div class="panel-body">
+            <form name="addNoteForm" class="form-horizontal" role="form" novalidate onkeydown="event.which == 13 || event.keyCode == 13 ? document.querySelector('#submitBtn').click() : true">
+                <div class="form-group has-feedback">
+                    <label class="control-label col-lg-1 col-md-1" for="name">Name</label>
+                    <div class="col-lg-11 col-md-11">
+                        <div ng-class="{ 'has-error' : addNoteForm.name.$invalid && addNoteForm.name.$dirty }">
+                            <input id="name" name="name" type="text" required ng-maxlength="32" class="form-control" ng-model="note.name" />
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-if="addNoteForm.name.$invalid && addNoteForm.name.$dirty"></span>
+                            <span class="text-danger" ng-show="addNoteForm.name.$error.required && addNoteForm.name.$dirty">The Name field is required.</span>
+                            <span class="text-danger" ng-show="addNoteForm.name.$error.maxlength">The Text field has the maximum length of 32 symbols.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <label class="control-label col-lg-1 col-md-1" for="text">Text</label>
+                    <div class="col-lg-11 col-md-11">
+                        <div ng-class="{ 'has-error' : addNoteForm.text.$invalid && addNoteForm.text.$dirty }">
+                            <textarea id="text" name="text" text="text" type="text" required rows="3" ng-maxlength="256" class="form-control" ng-model="note.text" />
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-if="addNoteForm.text.$invalid && addNoteForm.text.$dirty"></span>
+                            <span class="text-danger" ng-show="addNoteForm.text.$error.required && addNoteForm.text.$dirty">The Text field is required.</span>
+                            <span class="text-danger" ng-show="addNoteForm.text.$error.maxlength">The Text field has the maximum length of 256 symbols.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <label class="control-label col-lg-1 col-md-1" for="date">Date</label>
+                    <div class="col-lg-11 col-md-11">
+                        <div ng-class="{ 'has-error' : addNoteForm.date.$invalid && addNoteForm.date.$dirty }">
+                            <input id="date" name="date" type="text" required class="form-control datepicker" ng-model="note.date" ng-pattern="/^\d{4}-\d{2}-\d{2}$/" />
+                            <span class="glyphicon glyphicon-warning-sign form-control-feedback" ng-if="addNoteForm.date.$invalid && addNoteForm.date.$dirty"></span>
+                            <span class="text-danger" ng-show="addNoteForm.date.$error.required && addNoteForm.date.$dirty">The Date field is required.</span>
+                            <span class="text-danger" ng-show="addNoteForm.date.$error.pattern">The Date field must be a date.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-11 col-md-11 col-lg-offset-1 col-md-offset-1">
+                        <div class="btn-group btn-group-justified">
+                            <a href="#/notes" class="btn btn-default">
+                                <span class="glyphicon glyphicon-circle-arrow-left"></span> Back
+                            </a>
+                            <a id="submitBtn" class="btn btn-block btn-default" ng-disabled="addNoteForm.$invalid" ng-click="addNoteForm.$valid ? note.add() : null;">
+                                <span class="glyphicon glyphicon-plus"></span> Submit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr />

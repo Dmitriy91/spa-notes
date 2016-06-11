@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    @{
+        String theme = "~/Content/css/bootstrap-themes/bootstrap.css";
+
+        if (Request.Cookies.AllKeys.Contains("theme"))
+        {
+            theme = "~" + Request.Cookies["theme"].Value;
+        }
+    }
+    @Styles.Render(theme)
+    @Styles.Render("~/Content/css")
+</head>
+<body ng-controller="RootController">
+    <top-bar></top-bar>
+    <div class="container">
+        <div ng-view></div>
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Notes</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/Scripts/vendors")
+    @Scripts.Render("~/Scripts/app")
+</body>
+</html>

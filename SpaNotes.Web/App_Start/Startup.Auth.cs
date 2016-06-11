@@ -8,8 +8,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using SpaNotes.Web.Providers;
-using SpaNotes.Web.Models;
+using SpaNotes.Data;
+using SpaNotes.Web.Infrastructure.AuthProviders;
 
 namespace SpaNotes.Web
 {

@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SpaNotes.Web;
 using SpaNotes.Web.Controllers;
 
 namespace SpaNotes.Tests.Controllers
