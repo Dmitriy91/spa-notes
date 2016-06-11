@@ -1,11 +1,6 @@
 ﻿using SpaNotes.Services.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using Microsoft.AspNet.Identity;
 using SpaNotes.Web.Models;
 using System.Threading.Tasks;
 using SpaNotes.Entities;
@@ -43,7 +38,7 @@ namespace SpaNotes.Web.Controllers
         }
 
         // GET: api/notes/details/1
-        [Route("details/{id:int}")]
+        [Route("details/{id:int:min(1)}")]
         public IHttpActionResult Get(int? id)
         {
             if (id == null)
@@ -61,7 +56,7 @@ namespace SpaNotes.Web.Controllers
 
         // POST: api/notes/update/1
         [HttpPost]
-        [Route("update/{id:int}")]
+        [Route("update/{id:int:min(1)}")]
         public async Task<IHttpActionResult> Update([FromBody]NoteBindingModel noteBindingModel)
         {
             if (!ModelState.IsValid)
@@ -97,7 +92,7 @@ namespace SpaNotes.Web.Controllers
 
         // POST: api/notes/delete/1
         [HttpPost]
-        [Route("delete/{id:int}")]
+        [Route("delete/{id:int:min(1)}")]
         public async Task<IHttpActionResult> Delete(int? id)
         {
             if (id == null)
